@@ -1,0 +1,29 @@
+syntax = "proto3";
+package protoDef;
+
+message DiscoverRequest {}
+
+message DiscoverResponse {
+    repeated CommandDefinition Commands = 1;
+}
+
+message CommandDefinition {
+    string Use = 1;
+    string Short = 2;
+    string Long = 3;
+}
+
+message ExecRequest {
+    string command = 1;
+    repeated string args = 2;
+}
+
+message ExecResponse {
+    bytes stdout = 1;
+    bytes stderr = 2;
+}
+
+service CLI {
+    rpc Discover (DiscoverRequest) returns (DiscoverResponse);
+    rpc Exec (ExecRequest) returns (stream ExecResponse);
+}

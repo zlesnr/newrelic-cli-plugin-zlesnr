@@ -1,4 +1,9 @@
 {
+    "Plugin": {
+        "Name": "nerdpack",
+        "Short": "nerdpack operations",
+        "command": "node $HOME/.newrelic/plugins/nerdpack/index.js"
+    },
     "Commands": [
         {
             "Use": "create",

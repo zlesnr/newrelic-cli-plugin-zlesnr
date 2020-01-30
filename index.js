@@ -1,4 +1,4 @@
-const PROTO_PATH = __dirname + '/../host/protoDef/cli-plugin.proto';
+const PROTO_PATH = __dirname + '/cli-plugin.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 const health = require('grpc-health-check');

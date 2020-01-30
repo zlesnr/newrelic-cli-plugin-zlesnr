@@ -1,0 +1,41 @@
+{
+    "Commands": [
+        {
+            "Use": "create",
+            "Short": "create a nerdpack",
+            "Flags": [
+                {
+                    "Shorthand": "f",
+                    "Name": "force",
+                    "Type": "bool",
+                    "Usage": "if present, it will override existing files without asking"
+                },
+                {
+                    "Shorthand": "t",
+                    "Name": "type",
+                    "Type": "string",
+                    "Options": ["nerdpack", "nerdlet", "launcher"],
+                    "Prompt": "What kind of component do you want to create",
+                    "Usage": "type of the component"
+                },
+                {
+                    "Shorthand": "n",
+                    "Name": "name",
+                    "Type": "string",
+                    "Usage": "name of the component",
+                    "Prompt": "Name your component"
+                },
+                {
+                    "Shorthand": "p",
+                    "Name": "path",
+                    "Type": "string",
+                    "Usage": "route to the component"
+                }
+            ]
+        },
+        {
+            "Use": "validate",
+            "Short": "validate a nerdpack"
+        }
+    ]
+}

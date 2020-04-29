@@ -2,7 +2,7 @@
     "Plugin": {
         "Name": "zlesnr",
         "Short": "zlesnr operations",
-        "command": "python $HOME/.newrelic/plugins/zlesnr/main.py"
+        "command": "python $HOME/.newrelic/plugins/zlesnr/plugin.py"
     },
     "Commands": [
         {

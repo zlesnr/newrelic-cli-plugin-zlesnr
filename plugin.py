@@ -12,6 +12,8 @@ import cli_plugin_pb2_grpc
 from grpc_health.v1.health import HealthServicer
 from grpc_health.v1 import health_pb2, health_pb2_grpc
 
+from grpc_reflection.v1alpha import reflection
+
 go_plugin_version = 1
 app_protocol_version = 1
 plugin_host = "0.0.0.0"
@@ -22,8 +24,6 @@ class mine(cli_plugin_pb2_grpc.CLIServicer):
     """Provides methods that implement functionality of CLI plugin server."""
 
     def __init__(self):
-        sys.stdout.flush()
-
         self.supported_commands = [
             cli_plugin_pb2.CommandDefinition(
                 Use="hello",
@@ -58,6 +58,13 @@ def serve():
     health_pb2_grpc.add_HealthServicer_to_server(health, server)
 
     cli_plugin_pb2_grpc.add_CLIServicer_to_server(mine(), server)
+
+    SERVICE_NAMES = (
+        cli_plugin_pb2.DESCRIPTOR.services_by_name['CLI'].full_name,
+        reflection.SERVICE_NAME,
+    )
+    reflection.enable_server_reflection(SERVICE_NAMES, server)
+
     server.add_insecure_port(f'{plugin_host}:{plugin_port}')
 
     server.start()
